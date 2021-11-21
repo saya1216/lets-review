@@ -1,24 +1,26 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
+| Column                    | Type   | Option                    |
+| ------------------------- | ------ | ------------------------- |
+| nickname                  | string | null: false               |
+| email                     | string | null: false, unique: true |
+| encrypted_password        | string | null: false               |
 
-Things you may want to cover:
+### Association
+- has_many :studies
 
-* Ruby version
 
-* System dependencies
+## items テーブル
+| Column           | Type       | Option                         |
+| ---------------- | ---------- | ------------------------------ |
+| study_time       | time       | null: false                    |
+| study_language   | enum       | null: false                    |
+| other            | string     |                                |
+| good_point       | text       | null: false                    |
+| notgood_point    | text       |                                |
+| thoughts         | text       |                                |
+| user             | references | null: false, foreign_key: true |
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Association
+- belongs_to :user
